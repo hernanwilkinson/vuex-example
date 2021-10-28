@@ -6,6 +6,10 @@ class CartItem {
     isFor(product) {
         return this._product === product;
     }
+
+    quantity(){
+        return 1
+    }
 }
 
 test('Los cart items se crean con un producto', () => {
