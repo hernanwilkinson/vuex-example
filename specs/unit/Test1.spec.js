@@ -24,3 +24,10 @@ test('Los cart items se crean con cantidad 1', () => {
     const cartItem = new CartItem(product);
     expect(cartItem.quantity()).toEqual(1)
 })
+
+test('Se puede incrementar la cantidad de un cart item', () => {
+    const product = 'a product';
+    const cartItem = new CartItem(product);
+    cartItem.incrementQuantity()
+    expect(cartItem.quantity()).toEqual(2)
+})
