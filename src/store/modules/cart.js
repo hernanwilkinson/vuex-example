@@ -6,6 +6,7 @@ export default {
   state: {
     // {id, quantity}
     items: [],
+    cartItems: [],
     checkoutStatus: null
   },
 
@@ -27,11 +28,12 @@ export default {
   },
 
   mutations: {
-    pushProductToCart (state, productId) {
+    pushProductToCart (state, product) {
       state.items.push({
-        id: productId,
+        id: product.id,
         quantity: 1
       })
+      state.cartItems.push(new CartItem(product))
     },
 
     incrementItemQuantity (state, cartItem) {
@@ -52,7 +54,7 @@ export default {
       if (rootGetters['products/productIsInStock'](product)) {
         const cartItem = state.items.find(item => item.id === product.id)
         if (!cartItem) {
-          commit('pushProductToCart', product.id)
+          commit('pushProductToCart', product)
         } else {
           commit('incrementItemQuantity', cartItem)
         }
