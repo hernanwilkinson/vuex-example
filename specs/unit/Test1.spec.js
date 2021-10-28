@@ -1,6 +1,7 @@
 class CartItem {
     constructor(product) {
         this._product = product;
+        this._quantity = 1
     }
 
     isFor(product) {
@@ -8,7 +9,11 @@ class CartItem {
     }
 
     quantity(){
-        return 1
+        return this._quantity
+    }
+
+    incrementQuantity() {
+        this._quantity++
     }
 }
 
