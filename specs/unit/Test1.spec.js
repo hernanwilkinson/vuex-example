@@ -15,3 +15,8 @@ test('Los cart items se crean con un producto', () => {
     expect(cartItem.isFor('another product')).toBeFalsy()
 })
 
+test('Los cart items se crean con cantidad 1', () => {
+    const product = 'a product';
+    const cartItem = new CartItem(product);
+    expect(cartItem.quantity()).toEqual(1)
+})
