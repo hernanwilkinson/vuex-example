@@ -1,6 +1,6 @@
 class Cart {
     isEmpty() {
-        return undefined;
+        return true;
     }
 }
 
