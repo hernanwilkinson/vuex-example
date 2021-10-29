@@ -45,22 +45,26 @@ function createiPad() {
     return new Product( ipad_id, ipad_title, ipad_price, initial_ipad_inventory )
 }
 
+function removeInventaryOf(iPad) {
+    for (let i = initial_ipad_inventory; i > 0; i--)
+        iPad.decrementInventory()
+}
+
 test('Product hasStock cuando inventory > 0', () => {
     expect(createiPad().hasStock()).toBeTruthy()
 })
 
 test('Product no tiene stock cuando inventory <=0', () => {
-    let iPad = createiPad();
-    for (let i = initial_ipad_inventory; i > 0 ; i--)
-        iPad.decrementInventory()
+    let iPad = createiPad()
+    removeInventaryOf(iPad)
 
     expect(iPad.hasStock()).toBeFalsy()
 })
 
 test('No se puede decrementar inventario cuando no tiene stock', () => {
-    let iPad = createiPad();
-    for (let i = initial_ipad_inventory; i > 0 ; i--)
-        iPad.decrementInventory()
+    let iPad = createiPad()
+    removeInventaryOf(iPad)
+
     expect(()=>iPad.decrementInventory()).toThrowError(new Error(Product.CANNOT_DECREMENT_INVENTORY))
     expect(iPad.inventory()).toEqual(0)
 })
