@@ -63,3 +63,14 @@ test('Total del carrito es la suma del total de los items', () => {
     expect(cart.total()).toEqual(iPad.price()*2 + tShirt.price())
 
 })
+
+test('Se puede borrar un producto agregado al carrito', () => {
+    const iPad = createiPad()
+    const cart = new Cart()
+
+    cart.addProduct(iPad)
+    cart.removeProduct(iPad)
+
+    expect(cart.quantityOf(iPad)).toEqual(0)
+
+})

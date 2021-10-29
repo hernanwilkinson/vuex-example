@@ -39,4 +39,8 @@ export class Cart {
     total() {
         return this._contents.reduce((total, cartItem) => total + cartItem.total(), 0)
     }
+
+    removeProduct(product) {
+
+    }
 }
