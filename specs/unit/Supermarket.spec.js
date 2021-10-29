@@ -27,7 +27,7 @@ class Supermarket {
     }
 
     products() {
-        return undefined
+        return this._products
     }
 }
 
