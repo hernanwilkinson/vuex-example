@@ -17,9 +17,13 @@ class Supermarket {
     // y además se lo puede modificar sin el conocimiento del supermercado
     // lo cual no es pensar de manera sistémica
     decrementInventoryOf(product) {
-        if(this._products.indexOf(product)<0) throw new Error(INVALID_PRODUCT)
+        this.assertIsValidProduct(product);
 
         product.decrementInventory()
+    }
+
+    assertIsValidProduct(product) {
+        if (this._products.indexOf(product) < 0) throw new Error(INVALID_PRODUCT)
     }
 }
 
