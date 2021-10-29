@@ -43,9 +43,15 @@ export class Cart {
     removeProduct(product) {
         this.withCartItemOfProductDo(
             product,
-            cartItem => cartItem.decrementQuantity(),
+            cartItem => this.decrementCartItemQuantity(cartItem),
             () => {}
         )
     }
 
+    decrementCartItemQuantity(cartItem) {
+        cartItem.decrementQuantity();
+        if(cartItem.hasNoQuantity()) {
+            this._contents.splice(this._contents.indexOf(cartItem),1)
+        }
+    }
 }

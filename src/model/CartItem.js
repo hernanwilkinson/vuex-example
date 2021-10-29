@@ -25,6 +25,10 @@ export class CartItem {
         this._quantity--
     }
 
+    hasNoQuantity() {
+        return this._quantity === 0
+    }
+
     total() {
         return this.productPrice()*this.quantity()
     }
