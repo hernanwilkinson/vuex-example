@@ -38,7 +38,7 @@ class Cart {
     }
 
     total() {
-        return undefined
+        return this._contents.reduce((total, cartItem) => total + cartItem.total(), 0)
     }
 }
 
