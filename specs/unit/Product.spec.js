@@ -10,9 +10,13 @@ class Product {
     }
 
     decrementInventory() {
-        if(!this.hasStock()) throw new Error(Product.CANNOT_DECREMENT_INVENTORY)
+        this.assertHasStock()
 
         this._inventory--
+    }
+
+    assertHasStock() {
+        if (!this.hasStock()) throw new Error(Product.CANNOT_DECREMENT_INVENTORY)
     }
 
     inventory() {
