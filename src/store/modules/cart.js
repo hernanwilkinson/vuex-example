@@ -13,18 +13,11 @@ export default {
 
   getters: {
     cartProducts (state, getters, rootState, rootGetters) {
-      return state.items.map(cartItem => {
-        const product = rootState.products.items.find(product => product.id === cartItem.id)
-        return {
-          title: product.title,
-          price: product.price,
-          quantity: cartItem.quantity
-        }
-      })
+      return state.cartItems
     },
 
     cartTotal (state, getters) {
-      return getters.cartProducts.reduce((total, product) => total + product.price * product.quantity, 0)
+      return getters.cartProducts.reduce((total, cartItem) => total + cartItem.total(), 0)
     },
   },
 
