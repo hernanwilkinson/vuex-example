@@ -15,7 +15,7 @@ class Supermarket {
     // y además se lo puede modificar sin el conocimiento del supermercado
     // lo cual no es pensar de manera sistémica
     decrementInventoryOf(product) {
-
+        product.decrementInventory()
     }
 }
 
