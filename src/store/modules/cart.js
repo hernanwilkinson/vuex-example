@@ -5,8 +5,6 @@ export default {
   namespaced: true,
 
   state: {
-    // {id, quantity}
-    items: [],
     cartItems: [],
     checkoutStatus: null
   },
@@ -23,18 +21,10 @@ export default {
 
   mutations: {
     pushProductToCart (state, product) {
-      state.items.push({
-        id: product.id,
-        quantity: 1
-      })
       state.cartItems.push(new CartItem(product))
     },
-
     incrementItemQuantity (state, cartItem) {
-      cartItem.quantity++
-    },
-    incrementItemQuantity2 (state, cartItem2) {
-      cartItem2.incrementQuantity()
+      cartItem.incrementQuantity()
     },
 
     setCheckoutStatus (state, status) {
@@ -42,20 +32,18 @@ export default {
     },
 
     emptyCart (state) {
-      state.items = []
+      state.cartItems = []
     }
   },
 
   actions: {
     addProductToCart({state, getters, commit, rootState, rootGetters}, product) {
       if (rootGetters['products/productIsInStock'](product)) {
-        const cartItem = state.items.find(item => item.id === product.id)
-        const cartItem2 = state.cartItems.find(item => item.isFor(product))
+        const cartItem = state.cartItems.find(item => item.isFor(product))
         if (!cartItem) {
           commit('pushProductToCart', product)
         } else {
           commit('incrementItemQuantity', cartItem)
-          commit('incrementItemQuantity2', cartItem2)
         }
         commit('products/decrementProductInventory', product, {root: true})
       }
@@ -63,7 +51,7 @@ export default {
 
     checkout({state, commit}) {
       shop.buyProducts(
-        state.items,
+        state.cartItems,
         () => {
           commit('emptyCart')
           commit('setCheckoutStatus', 'success')
