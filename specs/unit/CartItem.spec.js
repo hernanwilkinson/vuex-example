@@ -31,18 +31,18 @@ test('Un cart item sabe calcular el total', () => {
 
 test('Un cart item devuelve el title del producto', () => {
     const product = createiPad()
-    const cartItem = new CartItem(product);
+    const cartItem = new CartItem(product)
     expect(cartItem.productTitle()).toEqual(product.title())
 })
 
 test('Un cart item devuelve el precio del producto', () => {
     const product = createiPad()
-    const cartItem = new CartItem(product);
+    const cartItem = new CartItem(product)
     expect(cartItem.productPrice()).toEqual(product.price())
 })
 
 test('Un cart item tiene mismo id que el producto', () => {
     const product = createiPad()
-    const cartItem = new CartItem(product);
+    const cartItem = new CartItem(product)
     expect(cartItem.id).toEqual(product.id)
 })

@@ -1,4 +1,4 @@
-import {CartItem} from "./CartItem";
+import {CartItem} from "./CartItem"
 
 export class Cart {
     constructor() {
@@ -6,14 +6,14 @@ export class Cart {
     }
 
     isEmpty() {
-        return this._contents.length === 0;
+        return this._contents.length === 0
     }
 
     addProduct(product) {
         this.withCartItemOfProductDo(
             product,
             cartItem => cartItem.incrementQuantity(),
-            () => this._contents.push(new CartItem(product)));
+            () => this._contents.push(new CartItem(product)))
     }
 
     quantityOf(product) {

@@ -1,4 +1,4 @@
-import {CANNOT_DECREMENT_INVENTORY} from "../../src/model/Product";
+import {CANNOT_DECREMENT_INVENTORY} from "../../src/model/Product"
 import {
     createiPad,
     initial_ipad_inventory,
@@ -6,7 +6,7 @@ import {
     ipad_price,
     ipad_title,
     removeInventaryOf
-} from "./TestObejectsFactory";
+} from "./TestObejectsFactory"
 
 test('Product hasStock cuando inventory > 0', () => {
     expect(createiPad().hasStock()).toBeTruthy()
@@ -28,7 +28,7 @@ test('No se puede decrementar inventario cuando no tiene stock', () => {
 })
 
 test('Se puede acceder a id, title, price e inventario', () => {
-    let iPad = createiPad();
+    let iPad = createiPad()
 
     expect(iPad.id).toEqual(ipad_id)
     expect(iPad.title()).toEqual(ipad_title)

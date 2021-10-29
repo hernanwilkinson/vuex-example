@@ -1,5 +1,5 @@
-import {createiPad, createTShirt} from "./TestObejectsFactory";
-import {Cart} from "../../src/model/Cart";
+import {createiPad, createTShirt} from "./TestObejectsFactory"
+import {Cart} from "../../src/model/Cart"
 
 test('Carrito se crea vacio', () => {
     expect(new Cart().isEmpty()).toBeTruthy()
@@ -7,28 +7,28 @@ test('Carrito se crea vacio', () => {
 
 test('Carrito deja de estar vacio cuando se agrega un producto', () => {
     const iPad = createiPad()
-    const cart = new Cart();
+    const cart = new Cart()
     cart.addProduct(iPad)
     expect(cart.isEmpty()).toBeFalsy()
 })
 
 test('Cuando se agrega un producto nuevo, la cantidad es 1', () => {
     const iPad = createiPad()
-    const cart = new Cart();
+    const cart = new Cart()
     cart.addProduct(iPad)
     expect(cart.quantityOf(iPad)).toEqual(1)
 })
 
 test('La cantidad de un producto no agregado es 0', () => {
     const iPad = createiPad()
-    const cart = new Cart();
+    const cart = new Cart()
     expect(cart.quantityOf(iPad)).toEqual(0)
 })
 
 test('La cantidad de un producto se incrementa cada vez que se agrega', () => {
     const iPad = createiPad()
     const tShirt = createTShirt()
-    const cart = new Cart();
+    const cart = new Cart()
 
     cart.addProduct(iPad)
     cart.addProduct(iPad)
@@ -41,7 +41,7 @@ test('La cantidad de un producto se incrementa cada vez que se agrega', () => {
 
 test('Los cart items son uno si se agrega el mismo producto mas de una vez', () => {
     const iPad = createiPad()
-    const cart = new Cart();
+    const cart = new Cart()
 
     cart.addProduct(iPad)
     cart.addProduct(iPad)

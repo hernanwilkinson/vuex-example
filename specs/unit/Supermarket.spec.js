@@ -1,5 +1,5 @@
 import {createiPad, createTShirt, initial_ipad_inventory, removeInventaryOf} from "./TestObejectsFactory";
-import {INVALID_PRODUCT, Supermarket} from "../../src/model/Supermarket";
+import {INVALID_PRODUCT, Supermarket} from "../../src/model/Supermarket"
 
 test('availableProducts devuelve los productos con stock', () => {
     const tShirt = createTShirt()
