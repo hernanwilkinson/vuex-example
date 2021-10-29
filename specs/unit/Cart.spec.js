@@ -1,4 +1,4 @@
-import {createiPad} from "./TestObejectsFactory";
+import {createiPad, createTShirt} from "./TestObejectsFactory";
 
 class Cart {
     constructor() {
@@ -40,4 +40,18 @@ test('La cantidad de un producto no agregado es 0', () => {
     const iPad = createiPad()
     const cart = new Cart();
     expect(cart.quantityOf(iPad)).toEqual(0)
+})
+
+test('La cantidad de un producto se incrementa cada vez que se agrega', () => {
+    const iPad = createiPad()
+    const tShirt = createTShirt()
+    const cart = new Cart();
+
+    cart.addProduct(iPad)
+    cart.addProduct(iPad)
+    cart.addProduct(tShirt)
+
+    expect(cart.quantityOf(iPad)).toEqual(2)
+    expect(cart.quantityOf(tShirt)).toEqual(1)
+
 })
