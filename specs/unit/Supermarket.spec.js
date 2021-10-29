@@ -8,7 +8,7 @@ class Supermarket {
     }
 
     availableProducts() {
-        return this._products
+        return this._products.filter(product => product.hasStock())
     }
 }
 
