@@ -17,6 +17,10 @@ export class CartItem {
     }
 
     total() {
-        return undefined;
+        return this.productPrice()*this.quantity();
+    }
+
+    productPrice() {
+        return this._product.price
     }
 }
