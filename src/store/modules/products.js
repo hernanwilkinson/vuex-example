@@ -18,10 +18,13 @@ export default {
     setProducts (state, products) {
       state.supermarket = new Supermarket(products)
     },
-
     decrementProductInventory (state, product) {
       state.supermarket.decrementInventoryOf(product)
-    }
+    },
+    incrementProductInventory(state,product) {
+      state.supermarket.incrementInventoryOf(product)
+    },
+
   },
 
   actions: {

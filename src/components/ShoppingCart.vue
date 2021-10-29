@@ -4,6 +4,9 @@
       <ul>
         <li v-for="cartItem in products">
           {{cartItem.productTitle()}} - {{cartItem.productPrice() | currency}} - {{cartItem.quantity()}}
+          <button
+              @click="removeProductFromCart(cartItem.product())"
+          >Remove</button>
         </li>
       </ul>
       <p>Total: {{total | currency}}</p>
@@ -27,8 +30,10 @@
     },
 
     methods: {
-      ...mapActions('cart', ['checkout'])
-    }
+      ...mapActions({
+        checkout: 'cart/checkout',
+        removeProductFromCart: 'cart/removeProductFromCart'
+      })    }
   }
 </script>
 

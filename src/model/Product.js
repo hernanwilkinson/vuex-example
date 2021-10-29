@@ -20,6 +20,10 @@ export class Product {
         this._inventory--
     }
 
+    incrementInventory() {
+        this._inventory++
+    }
+
     assertHasStock() {
         if (!this.hasStock()) throw new Error(CANNOT_DECREMENT_INVENTORY)
     }

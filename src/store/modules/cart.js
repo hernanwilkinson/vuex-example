@@ -27,6 +27,9 @@ export default {
     },
     emptyCart (state) {
       state.cart = new Cart()
+    },
+    removeProduct(state,product){
+      state.cart.removeProduct(product)
     }
   },
 
@@ -36,6 +39,11 @@ export default {
         commit('pushProductToCart', product)
         commit('products/decrementProductInventory', product, {root: true})
       }
+    },
+    removeProductFromCart({commit}, product){
+      commit('removeProduct',product)
+      commit('products/incrementProductInventory', product, {root: true})
+
     },
     checkout({state, commit}) {
       shop.buyProducts(

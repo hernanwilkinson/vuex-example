@@ -40,4 +40,8 @@ export class CartItem {
     productTitle() {
         return this._product.title()
     }
+
+    product(){
+        return this._product
+    }
 }

@@ -27,4 +27,10 @@ export class Supermarket {
     products() {
         return this._products
     }
+
+    incrementInventoryOf(product) {
+        this.assertIsValidProduct(product)
+
+        product.incrementInventory()
+    }
 }
