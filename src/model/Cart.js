@@ -46,7 +46,7 @@ export class Cart {
         this.withCartItemOfProductDo(
             product,
             cartItem => this.decrementCartItemQuantity(cartItem),
-            () => {}
+            () => { throw new Error(PRODUCT_NOT_IN_CART) }
         )
     }
 
