@@ -12,3 +12,8 @@ export function createiPad() {
 export function createTShirt() {
     return new Product(2, 'H&M T-Shirt White', 10.99, 10)
 }
+
+export function removeInventaryOf(iPad) {
+    for (let i = initial_ipad_inventory; i > 0; i--)
+        iPad.decrementInventory()
+}

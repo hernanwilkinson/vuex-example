@@ -1,10 +1,12 @@
 import {CANNOT_DECREMENT_INVENTORY} from "../../src/model/Product";
-import {createiPad, initial_ipad_inventory, ipad_id, ipad_price, ipad_title} from "./TestObejectsFactory";
-
-function removeInventaryOf(iPad) {
-    for (let i = initial_ipad_inventory; i > 0; i--)
-        iPad.decrementInventory()
-}
+import {
+    createiPad,
+    initial_ipad_inventory,
+    ipad_id,
+    ipad_price,
+    ipad_title,
+    removeInventaryOf
+} from "./TestObejectsFactory";
 
 test('Product hasStock cuando inventory > 0', () => {
     expect(createiPad().hasStock()).toBeTruthy()
