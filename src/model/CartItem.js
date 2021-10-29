@@ -1,6 +1,8 @@
 export class CartItem {
+
     constructor(product) {
-        this._product = product;
+        this.id = product.id
+        this._product = product
         this._quantity = 1
     }
 
