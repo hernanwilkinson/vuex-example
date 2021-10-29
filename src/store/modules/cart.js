@@ -1,57 +1,45 @@
 import shop from "./../../api/shop.js";
-import {CartItem} from "../../model/CartItem";
+import {Cart} from "../../model/Cart";
 
 export default {
   namespaced: true,
 
   state: {
-    cartItems: [],
+    cart: new Cart(),
     checkoutStatus: null
   },
 
   getters: {
-    cartProducts (state, getters, rootState, rootGetters) {
-      return state.cartItems
+    cartProducts (state) {
+      return state.cart.contents()
     },
-
-    cartTotal (state, getters) {
-      return getters.cartProducts.reduce((total, cartItem) => total + cartItem.total(), 0)
+    cartTotal (state) {
+      return state.cart.total()
     },
   },
 
   mutations: {
     pushProductToCart (state, product) {
-      state.cartItems.push(new CartItem(product))
+      state.cart.addProduct(product)
     },
-    incrementItemQuantity (state, cartItem) {
-      cartItem.incrementQuantity()
-    },
-
     setCheckoutStatus (state, status) {
       state.checkoutStatus = status
     },
-
     emptyCart (state) {
-      state.cartItems = []
+      state.cart = new Cart()
     }
   },
 
   actions: {
-    addProductToCart({state, getters, commit, rootState, rootGetters}, product) {
-      if (rootGetters['products/productIsInStock'](product)) {
-        const cartItem = state.cartItems.find(item => item.isFor(product))
-        if (!cartItem) {
-          commit('pushProductToCart', product)
-        } else {
-          commit('incrementItemQuantity', cartItem)
-        }
+    addProductToCart({commit}, product) {
+      if (product.hasStock()) {
+        commit('pushProductToCart', product)
         commit('products/decrementProductInventory', product, {root: true})
       }
     },
-
     checkout({state, commit}) {
       shop.buyProducts(
-        state.cartItems,
+        state.cart,
         () => {
           commit('emptyCart')
           commit('setCheckoutStatus', 'success')
