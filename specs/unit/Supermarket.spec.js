@@ -17,13 +17,17 @@ class Supermarket {
     // y además se lo puede modificar sin el conocimiento del supermercado
     // lo cual no es pensar de manera sistémica
     decrementInventoryOf(product) {
-        this.assertIsValidProduct(product);
+        this.assertIsValidProduct(product)
 
         product.decrementInventory()
     }
 
     assertIsValidProduct(product) {
         if (this._products.indexOf(product) < 0) throw new Error(INVALID_PRODUCT)
+    }
+
+    products() {
+        return undefined
     }
 }
 
@@ -58,3 +62,10 @@ test('no se puede decrementar stock de producto que no esta en el supermercado',
 
     expect(()=>supermarket.decrementInventoryOf(iPad)).toThrowError(new Error (INVALID_PRODUCT))
 })
+
+test('se puede acceder a todos los productos del supermercado', () => {
+    const tShirt = createTShirt()
+    const iPad = createiPad()
+    const supermarket = new Supermarket([tShirt,iPad])
+
+    expect(supermarket.products()).toStrictEqual([tShirt,iPad])})
