@@ -51,8 +51,9 @@ test('Product hasStock cuando inventory > 0', () => {
 
 test('Product no tiene stock cuando inventory <=0', () => {
     let iPad = createiPad();
-    iPad.decrementInventory()
-    iPad.decrementInventory()
+    for (let i = initial_ipad_inventory; i > 0 ; i--)
+        iPad.decrementInventory()
+
     expect(iPad.hasStock()).toBeFalsy()
 })
 
