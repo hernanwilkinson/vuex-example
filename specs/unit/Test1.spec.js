@@ -46,3 +46,9 @@ test('Un cart item devuelve el precio del producto', () => {
     const cartItem = new CartItem(product);
     expect(cartItem.productPrice()).toEqual(product.price)
 })
+
+test('Un cart item tiene mismo id que el producto', () => {
+    const product = iPad();
+    const cartItem = new CartItem(product);
+    expect(cartItem.id).toEqual(product.id)
+})
