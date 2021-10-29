@@ -19,3 +19,10 @@ test('Se puede incrementar la cantidad de un cart item', () => {
     cartItem.incrementQuantity()
     expect(cartItem.quantity()).toEqual(2)
 })
+
+test('Un cart item sabe calcular el total', () => {
+    const product = { price: 10 };
+    const cartItem = new CartItem(product);
+    cartItem.incrementQuantity()
+    expect(cartItem.total()).toEqual(product.price * cartItem.quantity())
+})

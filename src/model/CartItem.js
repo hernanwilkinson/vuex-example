@@ -5,7 +5,7 @@ export class CartItem {
     }
 
     isFor(product) {
-        return this._product.id === product.id;
+        return this._product === product;
     }
 
     quantity() {
@@ -14,5 +14,9 @@ export class CartItem {
 
     incrementQuantity() {
         this._quantity++
+    }
+
+    total() {
+        return undefined;
     }
 }
