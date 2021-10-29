@@ -13,8 +13,8 @@ class Cart {
         this._contents.push(product)
     }
 
-    quantityOf(product) {
-        return 1;
+    quantityOf(productToCount) {
+        return this._contents.filter(product => product === productToCount).length;
     }
 }
 
