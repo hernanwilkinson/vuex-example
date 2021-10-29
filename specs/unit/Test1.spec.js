@@ -34,3 +34,9 @@ test('Un cart item sabe calcular el total', () => {
     cartItem.incrementQuantity()
     expect(cartItem.total()).toEqual(product.price * cartItem.quantity())
 })
+
+test('Un cart item devuelve el title del producto', () => {
+    const product = iPad();
+    const cartItem = new CartItem(product);
+    expect(cartItem.productTitle()).toEqual(product.title)
+})

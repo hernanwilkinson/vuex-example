@@ -23,4 +23,8 @@ export class CartItem {
     productPrice() {
         return this._product.price
     }
+
+    productTitle() {
+        return undefined;
+    }
 }
