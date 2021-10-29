@@ -1,5 +1,7 @@
 import {CartItem} from "./CartItem"
 
+export const PRODUCT_NOT_IN_CART = 'Product not in cart'
+
 export class Cart {
     constructor() {
         this._contents = []
@@ -55,3 +57,4 @@ export class Cart {
         }
     }
 }
+

@@ -1,5 +1,5 @@
 import {createiPad, createTShirt} from "./TestObejectsFactory"
-import {Cart} from "../../src/model/Cart"
+import {Cart, PRODUCT_NOT_IN_CART} from "../../src/model/Cart"
 
 test('Carrito se crea vacio', () => {
     expect(new Cart().isEmpty()).toBeTruthy()
@@ -64,7 +64,7 @@ test('Total del carrito es la suma del total de los items', () => {
 
 })
 
-test('Se puede borrar un producto agregado al carrito', () => {
+test('Se puede sacar un producto agregado al carrito', () => {
     const iPad = createiPad()
     const cart = new Cart()
 
@@ -75,7 +75,7 @@ test('Se puede borrar un producto agregado al carrito', () => {
 
 })
 
-test('Cuando la cantidad llega a cero se borra el cart item', () => {
+test('Cuando la cantidad llega a cero se remueve el cart item', () => {
     const iPad = createiPad()
     const cart = new Cart()
 
@@ -86,7 +86,7 @@ test('Cuando la cantidad llega a cero se borra el cart item', () => {
 
 })
 
-test('Se mantiene el cart item si la cantidad es mayor a cero', () => {
+test('Luego de sacar un producto, se mantiene el cart item si la cantidad es mayor a cero', () => {
     const iPad = createiPad()
     const cart = new Cart()
 
@@ -97,4 +97,11 @@ test('Se mantiene el cart item si la cantidad es mayor a cero', () => {
     expect(cart.contents().length).toEqual(1)
     expect(cart.contents()[0].isFor(iPad)).toBeTruthy()
 
+})
+
+test('No se puede sacar un producto que no está en el carrito', () => {
+    const iPad = createiPad()
+    const cart = new Cart()
+
+    expect(() => cart.removeProduct(iPad)).toThrowError(new Error(PRODUCT_NOT_IN_CART))
 })
