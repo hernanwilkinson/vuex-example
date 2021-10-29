@@ -11,24 +11,32 @@ class Cart {
     }
 
     addProduct(product) {
-        const cartItem = this._contents.find(cartItem => cartItem.isFor(product))
-        if(!cartItem)
-            this._contents.push(new CartItem(product))
-        else
-            cartItem.incrementQuantity()
+        this.withCartItemOfProductDo(
+            product,
+            cartItem => cartItem.incrementQuantity(),
+            () => this._contents.push(new CartItem(product)));
     }
 
     quantityOf(product) {
-        const cartItem = this._contents.find(cartItem => cartItem.isFor(product))
-        if(!cartItem)
-            return 0
-        else
-            return cartItem.quantity()
+        return this.withCartItemOfProductDo(
+            product,
+            cartItem => cartItem.quantity(),
+            () => 0
+        )
     }
 
     contents() {
         return this._contents
     }
+
+    withCartItemOfProductDo(product, ifFound, ifNotFound) {
+        const cartItem = this._contents.find(cartItem => cartItem.isFor(product))
+        if (!cartItem)
+            return ifNotFound()
+        else
+            return ifFound(cartItem)
+    }
+
 }
 
 test('Carrito se crea vacio', () => {
@@ -68,7 +76,6 @@ test('La cantidad de un producto se incrementa cada vez que se agrega', () => {
     expect(cart.quantityOf(tShirt)).toEqual(1)
 
 })
-
 
 test('Los cart items son uno si se agrega el mismo producto mas de una vez', () => {
     const iPad = createiPad()
