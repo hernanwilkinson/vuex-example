@@ -12,6 +12,10 @@ class Cart {
     addProduct(product) {
         this._contents.push(product)
     }
+
+    quantityOf(product) {
+        return undefined;
+    }
 }
 
 test('Carrito se crea vacio', () => {
@@ -23,4 +27,11 @@ test('Carrito deja de estar vacio cuando se agrega un producto', () => {
     const cart = new Cart();
     cart.addProduct(iPad)
     expect(cart.isEmpty()).toBeFalsy()
+})
+
+test('Cuando se agrega un producto nuevo, la cantidad es 1', () => {
+    const iPad = createiPad()
+    const cart = new Cart();
+    cart.addProduct(iPad)
+    expect(cart.quantityOf(iPad)).toEqual(1)
 })
