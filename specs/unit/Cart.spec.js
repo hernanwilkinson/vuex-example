@@ -1,12 +1,16 @@
 import {createiPad} from "./TestObejectsFactory";
 
 class Cart {
+    constructor() {
+        this._contents = []
+    }
+
     isEmpty() {
-        return true;
+        return this._contents.length === 0;
     }
 
     addProduct(product) {
-
+        this._contents.push(product)
     }
 }
 
