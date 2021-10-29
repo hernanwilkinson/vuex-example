@@ -4,7 +4,7 @@ class Product {
     }
 
     hasStock(){
-        return undefined
+        return true
     }
 
 }
