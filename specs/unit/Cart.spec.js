@@ -1,4 +1,5 @@
 import {createiPad, createTShirt} from "./TestObejectsFactory";
+import {CartItem} from "../../src/model/CartItem";
 
 class Cart {
     constructor() {
@@ -10,11 +11,19 @@ class Cart {
     }
 
     addProduct(product) {
-        this._contents.push(product)
+        const cartItem = this._contents.find(cartItem => cartItem.isFor(product))
+        if(!cartItem)
+            this._contents.push(new CartItem(product))
+        else
+            cartItem.incrementQuantity()
     }
 
-    quantityOf(productToCount) {
-        return this._contents.filter(product => product === productToCount).length;
+    quantityOf(product) {
+        const cartItem = this._contents.find(cartItem => cartItem.isFor(product))
+        if(!cartItem)
+            return 0
+        else
+            return cartItem.quantity()
     }
 
     contents() {
