@@ -21,6 +21,10 @@ export class CartItem {
         this._quantity++
     }
 
+    decrementQuantity() {
+        this._quantity--
+    }
+
     total() {
         return this.productPrice()*this.quantity()
     }

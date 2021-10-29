@@ -41,6 +41,11 @@ export class Cart {
     }
 
     removeProduct(product) {
-
+        this.withCartItemOfProductDo(
+            product,
+            cartItem => cartItem.decrementQuantity(),
+            () => {}
+        )
     }
+
 }
