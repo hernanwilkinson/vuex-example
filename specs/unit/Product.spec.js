@@ -7,6 +7,9 @@ class Product {
         return true
     }
 
+    decrementInventory() {
+
+    }
 }
 
 function iPad() {
@@ -17,3 +20,9 @@ test('Product hasStock cuando inventory > 0', () => {
     expect(iPad().hasStock()).toBeTruthy()
 })
 
+test('Product no tiene stock cuando inventory <=0', () => {
+    let product = iPad();
+    product.decrementInventory()
+    product.decrementInventory()
+    expect(product.hasStock()).toBeFalsy()
+})
