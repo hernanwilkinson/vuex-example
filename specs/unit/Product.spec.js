@@ -1,28 +1,30 @@
 class Product {
     constructor(id, title, price, inventory) {
+        this._inventory = inventory;
 
     }
 
     hasStock(){
-        return true
+        return this._inventory > 0
     }
 
     decrementInventory() {
-
+        this._inventory--
     }
 }
 
-function iPad() {
-    return new Product( 1, "iPad 4 Mini", 500.01, 2 )
+function createiPad() {
+    return new Product( 1, "createiPad 4 Mini", 500.01, 2 )
 }
 
 test('Product hasStock cuando inventory > 0', () => {
-    expect(iPad().hasStock()).toBeTruthy()
+    expect(createiPad().hasStock()).toBeTruthy()
 })
 
 test('Product no tiene stock cuando inventory <=0', () => {
-    let product = iPad();
-    product.decrementInventory()
-    product.decrementInventory()
-    expect(product.hasStock()).toBeFalsy()
+    let iPad = createiPad();
+    iPad.decrementInventory()
+    iPad.decrementInventory()
+    expect(iPad.hasStock()).toBeFalsy()
 })
+
