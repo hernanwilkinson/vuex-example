@@ -10,11 +10,13 @@ class Product {
     }
 
     decrementInventory() {
+        if(!this.hasStock()) throw new Error(Product.CANNOT_DECREMENT_INVENTORY)
+
         this._inventory--
     }
 
     inventory() {
-        return undefined;
+        return this._inventory;
     }
 }
 
@@ -37,6 +39,6 @@ test('No se puede decrementar inventario cuando no tiene stock', () => {
     let iPad = createiPad();
     iPad.decrementInventory()
     iPad.decrementInventory()
-    expect(iPad.decrementInventory()).toThrowError(new Error(Product.CANNOT_DECREMENT_INVENTORY))
+    expect(()=>iPad.decrementInventory()).toThrowError(new Error(Product.CANNOT_DECREMENT_INVENTORY))
     expect(iPad.inventory()).toEqual(0)
 })
