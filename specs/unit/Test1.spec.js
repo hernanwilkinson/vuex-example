@@ -40,3 +40,9 @@ test('Un cart item devuelve el title del producto', () => {
     const cartItem = new CartItem(product);
     expect(cartItem.productTitle()).toEqual(product.title)
 })
+
+test('Un cart item devuelve el precio del producto', () => {
+    const product = iPad();
+    const cartItem = new CartItem(product);
+    expect(cartItem.productPrice()).toEqual(product.price)
+})
