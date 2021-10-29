@@ -1,15 +1,16 @@
 import shop from "./../../api/shop.js";
+import {Supermarket} from "../../model/Supermarket";
 
 export default {
   namespaced: true,
 
   state: {
-    items: []
+    supermarket: new Supermarket([])
   },
 
   getters: {
     availableProducts (state, getters) {
-      return state.items.filter(product => product.hasStock())
+      return state.supermarket.availableProducts()
     },
 
     productIsInStock () {
@@ -21,12 +22,11 @@ export default {
 
   mutations: {
     setProducts (state, products) {
-      // update products
-      state.items = products
+      state.supermarket = new Supermarket(products)
     },
 
     decrementProductInventory (state, product) {
-      product.decrementInventory()
+      state.supermarket.decrementInventoryOf(product)
     }
   },
 

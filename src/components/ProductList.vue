@@ -29,7 +29,7 @@
 
     computed: {
       ...mapState({
-        products: state => state.products.items
+        products: state => state.products.supermarket.products()
       }),
 
       ...mapGetters('products', {
