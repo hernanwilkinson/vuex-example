@@ -74,3 +74,14 @@ test('Se puede borrar un producto agregado al carrito', () => {
     expect(cart.quantityOf(iPad)).toEqual(0)
 
 })
+
+test('Cuando la cantidad llega a cero se borra el cart item', () => {
+    const iPad = createiPad()
+    const cart = new Cart()
+
+    cart.addProduct(iPad)
+    cart.removeProduct(iPad)
+
+    expect(cart.contents().length).toEqual(0)
+
+})
