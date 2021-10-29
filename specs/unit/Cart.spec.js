@@ -37,6 +37,9 @@ class Cart {
             return ifFound(cartItem)
     }
 
+    total() {
+        return undefined
+    }
 }
 
 test('Carrito se crea vacio', () => {
@@ -86,5 +89,18 @@ test('Los cart items son uno si se agrega el mismo producto mas de una vez', () 
 
     expect(cart.contents().length).toEqual(1)
     expect(cart.contents()[0].quantity()).toEqual(2)
+
+})
+
+test('Total del carrito es la suma del total de los items', () => {
+    const iPad = createiPad()
+    const tShirt = createTShirt()
+    const cart = new Cart()
+
+    cart.addProduct(iPad)
+    cart.addProduct(iPad)
+    cart.addProduct(tShirt)
+
+    expect(cart.total()).toEqual(iPad.price()*2 + tShirt.price())
 
 })
