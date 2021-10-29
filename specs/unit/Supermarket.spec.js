@@ -1,5 +1,7 @@
 import {createiPad, createTShirt, initial_ipad_inventory, removeInventaryOf} from "./TestObejectsFactory";
 
+const INVALID_PRODUCT = "Invalid product";
+
 class Supermarket {
 
     constructor(products) {
@@ -42,4 +44,11 @@ test('se puede decrementar stock de producto del supermercado', () => {
 
     supermarket.decrementInventoryOf(iPad)
     expect(iPad.inventory()).toEqual(initial_ipad_inventory-1)
+})
+
+test('no se puede decrementar stock de producto que no esta en el supermercado', () => {
+    const iPad = createiPad()
+    const supermarket = new Supermarket([])
+
+    expect(()=>supermarket.decrementInventoryOf(iPad)).toThrowError(new Error (INVALID_PRODUCT))
 })
