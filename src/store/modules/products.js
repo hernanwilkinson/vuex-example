@@ -11,12 +11,6 @@ export default {
   getters: {
     availableProducts (state, getters) {
       return state.supermarket.availableProducts()
-    },
-
-    productIsInStock () {
-      return (product) => {
-        return product.hasStock()
-      }
     }
   },
 

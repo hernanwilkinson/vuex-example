@@ -31,10 +31,6 @@
       ...mapState({
         products: state => state.products.supermarket.products()
       }),
-
-      ...mapGetters('products', {
-        productIsInStock: 'productIsInStock'
-      })
     },
 
     methods: {
