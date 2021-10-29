@@ -9,12 +9,12 @@ export default {
 
   getters: {
     availableProducts (state, getters) {
-      return state.items.filter(product => product.inventory > 0)
+      return state.items.filter(product => product.hasStock())
     },
 
     productIsInStock () {
       return (product) => {
-        return product.inventory > 0
+        return product.hasStock()
       }
     }
   },
@@ -26,7 +26,7 @@ export default {
     },
 
     decrementProductInventory (state, product) {
-      product.inventory--
+      product.decrementInventory()
     }
   },
 

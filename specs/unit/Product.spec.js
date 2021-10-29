@@ -1,13 +1,5 @@
-import {Product} from "../../src/model/Product";
-
-const ipad_id = 1;
-const ipad_title = 'iPad 4 Mini';
-const ipad_price = 500.01;
-const initial_ipad_inventory = 2;
-
-function createiPad() {
-    return new Product( ipad_id, ipad_title, ipad_price, initial_ipad_inventory )
-}
+import {CANNOT_DECREMENT_INVENTORY} from "../../src/model/Product";
+import {createiPad, initial_ipad_inventory, ipad_id, ipad_price, ipad_title} from "./TestObejectsFactory";
 
 function removeInventaryOf(iPad) {
     for (let i = initial_ipad_inventory; i > 0; i--)
@@ -29,7 +21,7 @@ test('No se puede decrementar inventario cuando no tiene stock', () => {
     let iPad = createiPad()
     removeInventaryOf(iPad)
 
-    expect(()=>iPad.decrementInventory()).toThrowError(new Error(Product.CANNOT_DECREMENT_INVENTORY))
+    expect(()=>iPad.decrementInventory()).toThrowError(new Error(CANNOT_DECREMENT_INVENTORY))
     expect(iPad.inventory()).toEqual(0)
 })
 

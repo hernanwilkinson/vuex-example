@@ -7,7 +7,7 @@ export class CartItem {
     }
 
     isFor(product) {
-        return this._product === product;
+        return this._product === product
     }
 
     quantity() {
@@ -19,14 +19,14 @@ export class CartItem {
     }
 
     total() {
-        return this.productPrice()*this.quantity();
+        return this.productPrice()*this.quantity()
     }
 
     productPrice() {
-        return this._product.price
+        return this._product.price()
     }
 
     productTitle() {
-        return this._product.title;
+        return this._product.title()
     }
 }

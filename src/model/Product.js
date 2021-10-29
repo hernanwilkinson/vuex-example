@@ -1,5 +1,6 @@
+export const CANNOT_DECREMENT_INVENTORY = "Cannot decrement inventory when there is no stock";
+
 export class Product {
-    static CANNOT_DECREMENT_INVENTORY = "Cannot decrement inventory when there is no stock";
 
     constructor(id, title, price, inventory) {
         this.id = id;
@@ -20,7 +21,7 @@ export class Product {
     }
 
     assertHasStock() {
-        if (!this.hasStock()) throw new Error(Product.CANNOT_DECREMENT_INVENTORY)
+        if (!this.hasStock()) throw new Error(CANNOT_DECREMENT_INVENTORY)
     }
 
     inventory() {
