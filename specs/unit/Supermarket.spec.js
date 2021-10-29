@@ -23,8 +23,8 @@ test('availableProducts devuelve los productos con stock', () => {
 test('availableProducts no devuelve los productos sin stock', () => {
     const tShirt = createTShirt()
     const iPad = createiPad()
-    const supermarket = new Supermarket([tShirt,iPad])
     removeInventaryOf(iPad)
+    const supermarket = new Supermarket([tShirt,iPad])
 
     expect(supermarket.availableProducts()).toStrictEqual([tShirt])
 })
