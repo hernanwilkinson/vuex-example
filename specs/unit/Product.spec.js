@@ -59,8 +59,8 @@ test('Product no tiene stock cuando inventory <=0', () => {
 
 test('No se puede decrementar inventario cuando no tiene stock', () => {
     let iPad = createiPad();
-    iPad.decrementInventory()
-    iPad.decrementInventory()
+    for (let i = initial_ipad_inventory; i > 0 ; i--)
+        iPad.decrementInventory()
     expect(()=>iPad.decrementInventory()).toThrowError(new Error(Product.CANNOT_DECREMENT_INVENTORY))
     expect(iPad.inventory()).toEqual(0)
 })
