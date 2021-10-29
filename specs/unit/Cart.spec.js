@@ -16,6 +16,10 @@ class Cart {
     quantityOf(productToCount) {
         return this._contents.filter(product => product === productToCount).length;
     }
+
+    contents() {
+        return this._contents
+    }
 }
 
 test('Carrito se crea vacio', () => {
@@ -53,5 +57,18 @@ test('La cantidad de un producto se incrementa cada vez que se agrega', () => {
 
     expect(cart.quantityOf(iPad)).toEqual(2)
     expect(cart.quantityOf(tShirt)).toEqual(1)
+
+})
+
+
+test('Los cart items son uno si se agrega el mismo producto mas de una vez', () => {
+    const iPad = createiPad()
+    const cart = new Cart();
+
+    cart.addProduct(iPad)
+    cart.addProduct(iPad)
+
+    expect(cart.contents().length).toEqual(1)
+    expect(cart.contents()[0].quantity()).toEqual(2)
 
 })
