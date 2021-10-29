@@ -1,5 +1,9 @@
 export class CartItem {
 
+    id
+    _product
+    _quantity
+
     constructor(product) {
         this.id = product.id
         this._product = product
