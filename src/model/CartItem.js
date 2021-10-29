@@ -25,6 +25,6 @@ export class CartItem {
     }
 
     productTitle() {
-        return undefined;
+        return this._product.title;
     }
 }
