@@ -1,4 +1,4 @@
-import {createiPad, createTShirt, removeInventaryOf} from "./TestObejectsFactory";
+import {createiPad, createTShirt, initial_ipad_inventory, removeInventaryOf} from "./TestObejectsFactory";
 
 class Supermarket {
 
@@ -9,6 +9,13 @@ class Supermarket {
 
     availableProducts() {
         return this._products.filter(product => product.hasStock())
+    }
+
+    // El inventario no debería ser parte del producto. Esto lo hace mutable
+    // y además se lo puede modificar sin el conocimiento del supermercado
+    // lo cual no es pensar de manera sistémica
+    decrementInventoryOf(product) {
+
     }
 }
 
@@ -27,4 +34,12 @@ test('availableProducts no devuelve los productos sin stock', () => {
     const supermarket = new Supermarket([tShirt,iPad])
 
     expect(supermarket.availableProducts()).toStrictEqual([tShirt])
+})
+
+test('se puede decrementar stock de producto del supermercado', () => {
+    const iPad = createiPad()
+    const supermarket = new Supermarket([iPad])
+
+    supermarket.decrementInventoryOf(iPad)
+    expect(iPad.inventory()).toEqual(initial_ipad_inventory-1)
 })
