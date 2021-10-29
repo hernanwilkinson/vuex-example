@@ -14,7 +14,7 @@ class Cart {
     }
 
     quantityOf(product) {
-        return undefined;
+        return 1;
     }
 }
 
