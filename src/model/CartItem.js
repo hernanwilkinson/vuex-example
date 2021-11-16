@@ -6,31 +6,36 @@ export class CartItem {
     constructor(product) {
         this.id = product.id
         this._product = product
-        this._quantity = 1
     }
 
     isFor(product) {
         return this._product === product
     }
 
-    quantity() {
+    get quantity() {
+        if(!this.hasOwnProperty('_quantity'))
+            this._quantity = 1
         return this._quantity
     }
 
+    set quantity(value) {
+        this._quantity = value
+    }
+
     incrementQuantity() {
-        this._quantity++
+        this.quantity ++
     }
 
     decrementQuantity() {
-        this._quantity--
+        this.quantity --
     }
 
     hasNoQuantity() {
-        return this._quantity === 0
+        return this.quantity === 0
     }
 
     total() {
-        return this.productPrice()*this.quantity()
+        return this.productPrice()*this.quantity
     }
 
     productPrice() {

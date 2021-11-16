@@ -47,7 +47,7 @@ test('Los cart items son uno si se agrega el mismo producto mas de una vez', () 
     cart.addProduct(iPad)
 
     expect(cart.contents().length).toEqual(1)
-    expect(cart.contents()[0].quantity()).toEqual(2)
+    expect(cart.contents()[0].quantity).toEqual(2)
 
 })
 

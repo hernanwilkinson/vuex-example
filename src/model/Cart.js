@@ -21,7 +21,7 @@ export class Cart {
     quantityOf(product) {
         return this.withCartItemOfProductDo(
             product,
-            cartItem => cartItem.quantity(),
+            cartItem => cartItem.quantity,
             () => 0
         )
     }

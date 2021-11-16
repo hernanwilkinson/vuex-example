@@ -3,7 +3,7 @@
       <h1>Shopping Cart</h1>
       <ul>
         <li v-for="cartItem in products">
-          {{cartItem.productTitle()}} - {{cartItem.productPrice() | currency}} - {{cartItem.quantity()}}
+          {{cartItem.productTitle()}} - {{cartItem.productPrice() | currency}} - {{cartItem.quantity}}
           <button
               @click="removeProductFromCart(cartItem.product())"
           >Remove</button>

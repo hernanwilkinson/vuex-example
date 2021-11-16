@@ -12,21 +12,21 @@ test('Los cart items se crean con un producto', () => {
 test('Los cart items se crean con cantidad 1', () => {
     const product = createiPad()
     const cartItem = new CartItem(product)
-    expect(cartItem.quantity()).toEqual(1)
+    expect(cartItem.quantity).toEqual(1)
 })
 
 test('Se puede incrementar la cantidad de un cart item', () => {
     const product = createiPad()
     const cartItem = new CartItem(product)
     cartItem.incrementQuantity()
-    expect(cartItem.quantity()).toEqual(2)
+    expect(cartItem.quantity).toEqual(2)
 })
 
 test('Un cart item sabe calcular el total', () => {
     const product = createiPad()
     const cartItem = new CartItem(product)
     cartItem.incrementQuantity()
-    expect(cartItem.total()).toEqual(product.price() * cartItem.quantity())
+    expect(cartItem.total()).toEqual(product.price() * cartItem.quantity)
 })
 
 test('Un cart item devuelve el title del producto', () => {
